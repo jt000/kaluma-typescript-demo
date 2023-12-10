@@ -1,8 +1,13 @@
-// index.js
+// main.ts
+
+import { LED } from "led";
 
 const ledPin = 28;
 
-pinMode(ledPin, OUTPUT);
+const led = new LED(ledPin);
+led.off();
+
 setInterval(() => {
-  digitalToggle(ledPin);
+  led.toggle();
+  console.log(`Pin ${led.pin} is ${led.read() == HIGH?"HIGH":"LOW"}`);
 }, 1000);
